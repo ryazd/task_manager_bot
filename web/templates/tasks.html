@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Админ-панель</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Список задач</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Пользователь</th>
+            <th>Текст</th>
+            <th>Статус</th>
+            <th>Дедлайн</th>
+        </tr>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.id }}</td>
+            <td>{{ task.user_id }}</td>
+            <td>{{ task.text }}</td>
+            <td>{% if task.is_done %}✅{% else %}❌{% endif %}</td>
+            {% if task.dead_line %}
+                <td>{{ task.dead_line }}</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
